@@ -1,0 +1,12 @@
+import cv2
+
+image = cv2.imread("754610747105090.jpeg")
+
+cv2.imshow("Окно с картинкой", image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+cv2.imshow("Чёрно-белая картинка", gray_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
