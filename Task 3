@@ -1,0 +1,19 @@
+import numpy as np
+from skimage import io, filters, segmentation, morphology
+from skimage.color import rgb2gray
+import matplotlib.pyplot as plt
+
+image = io.imread('photo.jpg')
+
+gray = rgb2gray(image)
+edges = filters.sobel(gray)
+mask = edges > 0.05
+blurred = filters.gaussian(image, sigma=10, channel_axis=-1)
+
+result = np.where(mask[..., np.newaxis], image, blurred)
+
+io.imsave('blurred_background.jpg', result)
+
+plt.imshow(result)
+plt.axis('off')
+plt.show()
